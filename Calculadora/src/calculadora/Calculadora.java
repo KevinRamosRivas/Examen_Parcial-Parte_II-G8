@@ -8,7 +8,7 @@ package calculadora;
 import java.text.DecimalFormat;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-
+import java.lang.Math;
 /**
  *
  * @author Christian Ramirez
@@ -512,6 +512,13 @@ public class Calculadora extends javax.swing.JFrame {
             cadenaNumeros = String.valueOf(resultado);
             operacion = "nula";
         }
+        else if(operacion.equals("potencian")){
+            segundoNumero = Double.parseDouble(cadenaNumeros);
+            resultado = Math.pow(primerNumero, segundoNumero);
+            etiquetaNumeros.setText(String.format("% .2f",resultado));
+            cadenaNumeros = String.valueOf(resultado);
+            operacion = "nula";
+        }
 
         
         etiquetaMuestra.setText("");
@@ -606,8 +613,22 @@ public class Calculadora extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_botonMultiplicar1ActionPerformed
 
+    
+    // En esta funcion se realiza la potenciacion a un numero N en la calculadora
     private void botonPotencianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPotencianActionPerformed
-        // TODO add your handling code here:
+        // Aqui debe de solicitarse los numeros requeridos para la potenciacion
+        // Debe contemplase la potencia N
+        // Es requerido añadir una liberia de soporte
+        // Zenobio Pariasca Edgar Alonso
+        if (activado) {
+            primerNumero = Double.parseDouble(cadenaNumeros);
+            etiquetaMuestra.setText(cadenaNumeros + "^");
+            cadenaNumeros = "";
+            operacion = "potencian";
+            activado = false;
+        }
+            
+        
     }//GEN-LAST:event_botonPotencianActionPerformed
 
     private void botonPorcentajeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPorcentajeActionPerformed
